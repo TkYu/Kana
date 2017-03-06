@@ -168,15 +168,15 @@ namespace Kana.Pages
             stackLayout.Orientation = (width < height) ? StackOrientation.Vertical : StackOrientation.Horizontal;
 
             // Calculate square size and position based on stack size.
-            var squareSize = Math.Min(width, height) / 5;
+            var squareSize = Math.Min(width, height) / Device.OnPlatform(iOS: 5, Android: 5, WinPhone: 5);
             absoluteLayout.WidthRequest = 5 * squareSize;
             absoluteLayout.HeightRequest = 5 * squareSize;
-
+            var padding = Device.OnPlatform(iOS: 15.0, Android: 2.0, WinPhone: 10.0);
             foreach (View view in absoluteLayout.Children)
             {
                 AnswerPad btn = (AnswerPad)view;
                 btn.SetLabelFont(0.35 * squareSize, FontAttributes.None);
-                AbsoluteLayout.SetLayoutBounds(btn, new Rectangle(btn.Col * squareSize, btn.Row * squareSize, squareSize, squareSize));
+                AbsoluteLayout.SetLayoutBounds(btn, new Rectangle(btn.Col * squareSize + padding/2, btn.Row * squareSize, squareSize - padding, squareSize - padding));
             }
         }
 
@@ -233,25 +233,23 @@ namespace Kana.Pages
             currentAnswer = null;
 
             List<Task> tsk = new List<Task>();
-            uint inc = 0;
-            var take = TakeSome(absoluteLayout.Children.Count);
-            var da = rd.Next(0, take.Length - 1);
-            for (int i = 0; i < absoluteLayout.Children.Count; i++)
+            uint inc = 70;
+
+            foreach (View view in absoluteLayout.Children)
             {
-                AnswerPad btn = (AnswerPad)absoluteLayout.Children[i];
-                if (!btn.AcceptEvent)haveBad = true;
-                var cc = take[i];
-                if (i == da && currentAnswer == null)
-                {
-                    currentKana.Text = rd.Next(0, 100) < 50 ? cc.Hiragana : cc.Katakana;
-                    currentAnswer = cc.Romaji;
-                }
+                AnswerPad btn = (AnswerPad)view;
+
+                btn.TextColor = Color.White;
+                btn.BackgroundColor = Color.FromHex("00A0E9");
+                btn.AcceptEvent = true;
+
+                
+                tsk.Add(btn.RotateXTo(180, inc));
+                btn.Text = "";
 
                 inc += 60;
-                tsk.Add(btn.RotateXTo(180, inc));
-
-                btn.Text = cc.Romaji;
             }
+
             if (!haveBad) okay++;
             if (isPlaying) scoreLabel.Text = $"{okay}/{total}";
             tsk.Add(currentKana.ScaleTo(0));
@@ -259,18 +257,29 @@ namespace Kana.Pages
 
             tsk.Clear();
 
-            foreach (View view in absoluteLayout.Children)
+            
+
+            var take = TakeSome(absoluteLayout.Children.Count);
+            var da = rd.Next(0, take.Length - 1);
+            for (int i = 0; i < absoluteLayout.Children.Count; i++)
             {
                 inc -= 60;
-                AnswerPad btn = (AnswerPad)view;
 
-                btn.TextColor = Color.White;
-                btn.BackgroundColor = Color.FromHex("00A0E9");
-                btn.AcceptEvent = true;
+                AnswerPad btn = (AnswerPad)absoluteLayout.Children[i];
+                if (!btn.AcceptEvent) haveBad = true;
+                var cc = take[i];
+                if (i == da && currentAnswer == null)
+                {
+                    currentKana.Text = rd.Next(0, 100) < 50 ? cc.Hiragana : cc.Katakana;
+                    currentAnswer = cc.Romaji;
+                }
 
+                
                 tsk.Add(btn.RotateXTo(0, inc));
+
+                btn.Text = cc.Romaji;
             }
-            
+
             tsk.Add(currentKana.ScaleTo(1));
             await Task.WhenAll(tsk);
         }

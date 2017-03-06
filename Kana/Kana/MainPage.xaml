@@ -4,8 +4,8 @@
              x:Class="Kana.MainPage"
              xmlns:pg="clr-namespace:Kana.Pages;assembly=Kana"
              Title="TabbedPage">
-    <pg:SeionPage Title="清音"/>
-    <pg:DakuonPage Title="濁音"/>
-    <pg:YouonPage Title="拗音"/>
-    <pg:PracticePage Title="練習"/>
+    <pg:SeionPage Title="清音" Icon="s.png"/>
+    <pg:DakuonPage Title="濁音" Icon="d.png"/>
+    <pg:YouonPage Title="拗音" Icon="y.png"/>
+    <pg:PracticePage Title="練習" Icon="t.png"/>
 </TabbedPage>

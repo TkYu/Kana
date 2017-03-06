@@ -23,7 +23,7 @@ namespace Kana
             {new KanaChar("や", "ヤ", "ya", "[jä]"), new KanaChar("い", "イ", "i", "[i]",true), new KanaChar("ゆ", "ユ", "yu", "[jɯ̹]"), new KanaChar("え", "エ", "e", "[e̞]",true), new KanaChar("よ", "ヨ", "yo", "[jo̞]")},
             {new KanaChar("ら", "ラ", "ra", "[ɺä]"), new KanaChar("り", "リ", "ri", "[ɺʲi]"), new KanaChar("る", "ル", "ru", "[ɺɯ̹]"), new KanaChar("れ", "レ", "re", "[ɺe̞]"), new KanaChar("ろ", "ロ", "ro", "[ɺo̞]")},
             {new KanaChar("わ", "ワ", "wa", "[β̞ä]"), new KanaChar("い", "イ", "i", "ゐ ヰ",true), new KanaChar("う", "ウ", "u", "[ɯ̹]",true), new KanaChar("え", "エ", "e", "ゑ ヱ",true), new KanaChar("を", "ヲ", "o", "[o̞]")},
-            {new KanaChar("ん", "ン", "n/nn", "[n]"), null, null, null, null}
+            {new KanaChar("ん", "ン", "n", "[n]"), null, null, null, null}
         };
 
         public static KanaChar[,] Dakuon { get; } =

@@ -12,6 +12,7 @@ namespace Kana.Pages
     {
         public SeionPage() : base(Kanas.Seion)
         {
+            fontFactor = Device.OnPlatform(Android: 0.4, iOS: 0.3, WinPhone: 0.4);
         }
     }
 }

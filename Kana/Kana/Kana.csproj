@@ -48,10 +48,6 @@
     <Compile Include="Pages\GojuuonChart.cs" />
     <Compile Include="Pages\PracticePage.cs" />
     <Compile Include="Pages\SeionPage.cs" />
-    <Compile Include="Pages\TestPage.xaml.cs">
-      <DependentUpon>TestPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\TestPage1.cs" />
     <Compile Include="Pages\YouonPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -80,12 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\TestPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

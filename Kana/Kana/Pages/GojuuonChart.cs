@@ -41,7 +41,7 @@ namespace Kana.Pages
                 absoluteLayout.Children.Add(square);
             }
             absoluteLayout.SizeChanged += AbsoluteLayout_SizeChanged;
-            Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+            Padding = new Thickness(0, Device.OnPlatform(40, 0, 0), 0, 0);
             Content = absoluteLayout;
         }
 
