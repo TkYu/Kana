@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Kana"
-             x:Class="Kana.MainPage">
-
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-
-</ContentPage>
+             x:Class="Kana.MainPage"
+             xmlns:pg="clr-namespace:Kana.Pages;assembly=Kana"
+             Title="TabbedPage">
+    <!--Pages can be added as references or inline-->
+    <pg:SeionPage Title="清音" Icon="haha.png"/>
+    <pg:DakuonPage Title="浊音" Icon="haha.png"/>
+    <pg:YouonPage  Title="拗音" Icon="haha.png"/>
+    <pg:TestPage  Title="测试" Icon="haha.png" />
+</TabbedPage>
