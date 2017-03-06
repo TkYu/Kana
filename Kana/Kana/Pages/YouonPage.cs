@@ -12,7 +12,7 @@ namespace Kana.Pages
     {
         public YouonPage() : base(Kanas.Youon)
         {
-            fontFactor = 0.45;
+            fontFactor = Device.OnPlatform(Android: 0.4, iOS: 0.45, WinPhone: 0.45);
         }
     }
 }

@@ -56,7 +56,8 @@ namespace Kana.Pages
             // Calculate square size and position based on stack size.
             var squareW = width / matrixWidth;
             var squareH = height / matrixHeight;
-            if (squareH > squareW) squareH = squareW;
+            var gold = squareW * 0.618;
+            if (squareH > gold) squareH = gold;
             absoluteLayout.WidthRequest = matrixWidth * squareW;
             absoluteLayout.HeightRequest = matrixHeight * squareH;
 

@@ -5,8 +5,8 @@
              xmlns:pg="clr-namespace:Kana.Pages;assembly=Kana"
              Title="TabbedPage">
     <!--Pages can be added as references or inline-->
-    <pg:SeionPage Title="清音" Icon="haha.png"/>
-    <pg:DakuonPage Title="浊音" Icon="haha.png"/>
-    <pg:YouonPage  Title="拗音" Icon="haha.png"/>
-    <pg:TestPage  Title="测试" Icon="haha.png" />
+    <pg:SeionPage Title="清音"/>
+    <pg:DakuonPage Title="浊音"/>
+    <pg:YouonPage  Title="拗音"/>
+    <pg:TestPage  Title="测试"/>
 </TabbedPage>

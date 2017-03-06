@@ -5,6 +5,7 @@ using System.Reflection.Emit;
 using System.Text;
 using Kana.Models;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace Kana.Pages
 {
@@ -12,7 +13,7 @@ namespace Kana.Pages
     {
         public DakuonPage() : base(Kanas.Dakuon)
         {
-            fontFactor = 0.3;
+            fontFactor = Device.OnPlatform(Android: 0.3, iOS: 0.3, WinPhone: 0.3);
         }
     }
 }
