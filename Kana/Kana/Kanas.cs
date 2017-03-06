@@ -27,27 +27,27 @@ namespace Kana
 
         public static KanaChar[,] Dakuon { get; } =
         {
-            {new KanaChar("が", "ガ", "ga", null), new KanaChar("ぎ", "ギ", "gi", null), new KanaChar("ぐ", "グ", "gu", null), new KanaChar("げ", "ゲ", "ge", null), new KanaChar("ご", "ゴ", "go", null)},
-            {new KanaChar("ざ", "ザ", "za", null), new KanaChar("じ", "ジ", "ji", null), new KanaChar("ず", "ズ", "zu", null), new KanaChar("ぜ", "ゼ", "ze", null), new KanaChar("ぞ", "ゾ", "zo", null)},
-            {new KanaChar("だ", "ダ", "da", null), new KanaChar("ぢ", "ヂ", "ji", null), new KanaChar("づ", "ヅ", "zu", null), new KanaChar("で", "デ", "de", null), new KanaChar("ど", "ド", "do", null)},
-            {new KanaChar("ば", "バ", "ba", null), new KanaChar("び", "ビ", "bi", null), new KanaChar("ぶ", "ブ", "bu", null), new KanaChar("べ", "ベ", "be", null), new KanaChar("ぼ", "ボ", "bo", null)},
-            {new KanaChar("ぱ", "パ", "pa", null), new KanaChar("ぴ", "ピ", "pi", null), new KanaChar("ぷ", "プ", "pu", null), new KanaChar("ぺ", "ペ", "pe", null), new KanaChar("ぽ", "ポ", "po", null)}
+            {new KanaChar("が", "ガ", "ga", "[ɡa]"), new KanaChar("ぎ", "ギ", "gi", "[ɡi]"), new KanaChar("ぐ", "グ", "gu", "[ɡu͍]"), new KanaChar("げ", "ゲ", "ge", "[ɡe]"), new KanaChar("ご", "ゴ", "go", "[ɡo]")},
+            {new KanaChar("ざ", "ザ", "za", "[za]"), new KanaChar("じ", "ジ", "ji", "[d͡ʑi]"), new KanaChar("ず", "ズ", "zu", "[zu͍]"), new KanaChar("ぜ", "ゼ", "ze", "[ze]"), new KanaChar("ぞ", "ゾ", "zo", "[zo]")},
+            {new KanaChar("だ", "ダ", "da", "[da]"), new KanaChar("ぢ", "ヂ", "ji", "[d͡ʑi]"), new KanaChar("づ", "ヅ", "zu", "[zu͍]"), new KanaChar("で", "デ", "de", "[de]"), new KanaChar("ど", "ド", "do", "[do]")},
+            {new KanaChar("ば", "バ", "ba", "[ba]"), new KanaChar("び", "ビ", "bi", "[bi]"), new KanaChar("ぶ", "ブ", "bu", "[bu͍]"), new KanaChar("べ", "ベ", "be", "[be]"), new KanaChar("ぼ", "ボ", "bo", "[bo]")},
+            {new KanaChar("ぱ", "パ", "pa", "[pa]"), new KanaChar("ぴ", "ピ", "pi", "[pi]"), new KanaChar("ぷ", "プ", "pu", "[pu͍]"), new KanaChar("ぺ", "ペ", "pe", "[pe]"), new KanaChar("ぽ", "ポ", "po", "[po]")}
 
         };
 
         public static KanaChar[,] Youon { get; } =
         {
-            {new KanaChar("きゃ", "キャ", "kya", null), new KanaChar("きゅ", "キュ", "kyu", null), new KanaChar("きょ", "キョ", "kyo", null),},
-            {new KanaChar("しゃ", "シャ", "sha", null), new KanaChar("しゅ", "シュ", "shu", null), new KanaChar("しょ", "ショ", "sho", null)},
-            {new KanaChar("ちゃ", "チャ", "cha", null), new KanaChar("ちゅ", "チュ", "chu", null), new KanaChar("ちょ", "チョ", "cho", null)},
-            {new KanaChar("にゃ", "ニャ", "nya", null), new KanaChar("にゅ", "ニュ", "nyu", null), new KanaChar("にょ", "ニョ", "nyo", null)},
-            {new KanaChar("ひゃ", "ヒャ", "hya", null), new KanaChar("ひゅ", "ヒュ", "hyu", null), new KanaChar("ひょ", "ヒョ", "hyo", null)},
-            {new KanaChar("みゃ", "ミャ", "mya", null), new KanaChar("みゅ", "ミュ", "myu", null), new KanaChar("みょ", "ミョ", "myo", null)},
-            {new KanaChar("りゃ", "リャ", "rya", null), new KanaChar("りゅ", "リュ", "ryu", null), new KanaChar("りょ", "リョ", "ryo", null)},
-            {new KanaChar("ぎゃ", "ギャ", "gya", null), new KanaChar("ぎゅ", "ギュ", "gyu", null), new KanaChar("ぎょ", "ギョ", "gyo", null)},
-            {new KanaChar("じゃ", "ジャ", "ja", null), new KanaChar("じゅ", "ジュ", "ju", null), new KanaChar("じょ", "ジョ", "jo", null)},
-            {new KanaChar("びゃ", "ビャ", "bya", null), new KanaChar("びゅ", "ビュ", "byu", null), new KanaChar("びょ", "ビョ", "byo", null)},
-            {new KanaChar("ぴゃ", "ピャ", "pya", null), new KanaChar("ぴゅ", "ピュ", "pyu", null), new KanaChar("ぴょ", "ピョ", "pyo", null)}
+            {new KanaChar("きゃ", "キャ", "kya", "[kʲa]"), new KanaChar("きゅ", "キュ", "kyu", "[kʲu͍]"), new KanaChar("きょ", "キョ", "kyo", "[kʲo]")},
+            {new KanaChar("しゃ", "シャ", "sha", "[ɕa]"), new KanaChar("しゅ", "シュ", "shu", "[ɕu͍]"), new KanaChar("しょ", "ショ", "sho", "[ɕo]")},
+            {new KanaChar("ちゃ", "チャ", "cha", "[ t͡ɕa]"), new KanaChar("ちゅ", "チュ", "chu", "[ t͡ɕu͍]"), new KanaChar("ちょ", "チョ", "cho", "[ t͡ɕo]")},
+            {new KanaChar("にゃ", "ニャ", "nya", "[nʲa]"), new KanaChar("にゅ", "ニュ", "nyu", "[nʲu͍]"), new KanaChar("にょ", "ニョ", "nyo", "[nʲo]")},
+            {new KanaChar("ひゃ", "ヒャ", "hya", "[ça]"), new KanaChar("ひゅ", "ヒュ", "hyu", "[çu͍]"), new KanaChar("ひょ", "ヒョ", "hyo", "[ço]")},
+            {new KanaChar("みゃ", "ミャ", "mya", "[mʲa]"), new KanaChar("みゅ", "ミュ", "myu", "[mʲu͍]"), new KanaChar("みょ", "ミョ", "myo", "[mʲo]")},
+            {new KanaChar("りゃ", "リャ", "rya", "[ɽʲa]"), new KanaChar("りゅ", "リュ", "ryu", "[ɽʲu͍]"), new KanaChar("りょ", "リョ", "ryo", "[ɽʲo]")},
+            {new KanaChar("ぎゃ", "ギャ", "gya", "[ɡʲa]"), new KanaChar("ぎゅ", "ギュ", "gyu", "[ɡʲu͍]"), new KanaChar("ぎょ", "ギョ", "gyo", "[ɡʲo]")},
+            {new KanaChar("じゃ", "ジャ", "ja", "[d͡ʑa]"), new KanaChar("じゅ", "ジュ", "ju", "[d͡ʑu͍]"), new KanaChar("じょ", "ジョ", "jo", "[d͡ʑo]")},
+            {new KanaChar("びゃ", "ビャ", "bya", "[bʲa]"), new KanaChar("びゅ", "ビュ", "byu", "[bʲu͍]"), new KanaChar("びょ", "ビョ", "byo", "[bʲo]")},
+            {new KanaChar("ぴゃ", "ピャ", "pya", "[pʲa]"), new KanaChar("ぴゅ", "ピュ", "pyu", "[pʲu͍]"), new KanaChar("ぴょ", "ピョ", "pyo", "[pʲo]")}
         };
 
 
