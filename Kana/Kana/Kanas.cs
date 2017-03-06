@@ -8,6 +8,7 @@ using Xamarin.Forms;
 
 namespace Kana
 {
+
     public static class Kanas
     {
         public static KanaChar[,] Seion { get; } =
@@ -21,7 +22,7 @@ namespace Kana
             {new KanaChar("ま", "マ", "ma", "[mä]"), new KanaChar("み", "ミ", "mi", "[mʲi]"), new KanaChar("む", "ム", "mu", "[mɯ̹]"), new KanaChar("め", "メ", "me", "[me̞]"), new KanaChar("も", "モ", "mo", "[mo̞]")},
             {new KanaChar("や", "ヤ", "ya", "[jä]"), new KanaChar("い", "イ", "i", "[i]",true), new KanaChar("ゆ", "ユ", "yu", "[jɯ̹]"), new KanaChar("え", "エ", "e", "[e̞]",true), new KanaChar("よ", "ヨ", "yo", "[jo̞]")},
             {new KanaChar("ら", "ラ", "ra", "[ɺä]"), new KanaChar("り", "リ", "ri", "[ɺʲi]"), new KanaChar("る", "ル", "ru", "[ɺɯ̹]"), new KanaChar("れ", "レ", "re", "[ɺe̞]"), new KanaChar("ろ", "ロ", "ro", "[ɺo̞]")},
-            {new KanaChar("わ", "ワ", "wa", "[β̞ä]"), new KanaChar("い", "イ", "i", "ゐ、ヰ",true), new KanaChar("う", "ウ", "u", "[ɯ̹]",true), new KanaChar("え", "エ", "e", "ゑ、ヱ",true), new KanaChar("を", "ヲ", "o", "[o̞]")},
+            {new KanaChar("わ", "ワ", "wa", "[β̞ä]"), new KanaChar("い", "イ", "i", "ゐ ヰ",true), new KanaChar("う", "ウ", "u", "[ɯ̹]",true), new KanaChar("え", "エ", "e", "ゑ ヱ",true), new KanaChar("を", "ヲ", "o", "[o̞]")},
             {new KanaChar("ん", "ン", "n/nn", "[n]"), null, null, null, null}
         };
 
@@ -49,6 +50,7 @@ namespace Kana
             {new KanaChar("びゃ", "ビャ", "bya", "[bʲa]"), new KanaChar("びゅ", "ビュ", "byu", "[bʲu͍]"), new KanaChar("びょ", "ビョ", "byo", "[bʲo]")},
             {new KanaChar("ぴゃ", "ピャ", "pya", "[pʲa]"), new KanaChar("ぴゅ", "ピュ", "pyu", "[pʲu͍]"), new KanaChar("ぴょ", "ピョ", "pyo", "[pʲo]")}
         };
+
 
 
         public static KanaSquare[] ToKanaSquares(this KanaChar[,] items)

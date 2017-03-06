@@ -6,6 +6,6 @@
              Title="TabbedPage">
     <pg:SeionPage Title="清音"/>
     <pg:DakuonPage Title="濁音"/>
-    <pg:YouonPage  Title="拗音"/>
-    <pg:TestPage  Title="練習"/>
+    <pg:YouonPage Title="拗音"/>
+    <pg:PracticePage Title="練習"/>
 </TabbedPage>

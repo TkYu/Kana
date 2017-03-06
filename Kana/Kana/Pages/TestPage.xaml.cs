@@ -19,7 +19,8 @@ namespace Kana.Pages
         public TestPage()
         {
             InitializeComponent();
-            BindingContext = new TestPageViewModel();
+            //BindingContext = new TestPageViewModel();
+            
         }
     }
 

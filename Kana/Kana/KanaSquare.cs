@@ -25,7 +25,7 @@ namespace Kana
             kanaChar = kana;
             label = new Label
             {
-                Text = $"{kanaChar.Hiragana}、{kanaChar.Katakana}",
+                Text = $"{kanaChar.Hiragana} {kanaChar.Katakana}",
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.StartAndExpand
@@ -87,7 +87,7 @@ namespace Kana
             isReverse = !isReverse;
             uint length = 150;
             await Task.WhenAll(this.ScaleTo(2, length), this.RotateTo(180, length));
-            label.Text = isReverse ? kanaChar.PhoneticSymbol : $"{kanaChar.Hiragana}、{kanaChar.Katakana}";
+            label.Text = isReverse ? kanaChar.PhoneticSymbol : $"{kanaChar.Hiragana} {kanaChar.Katakana}";
             await Task.WhenAll(this.ScaleTo(1, length), this.RotateTo(360, length));
             Rotation = 0;
         }

@@ -3,14 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Kana.Pages.TestPage"
              Title="TestPage">
-  <ScrollView>
-    <StackLayout Padding="10">
-      <Label Text="ContentPage" FontSize="40"/>
-      <Label Text="ContentPage is the simplest type of page."/>
-      <Label Text="The content of the ContentPage is generally a layout of some sort that can be a parent to multiple children."/>
-      <Label Text="This contant page contains a StackLayout, which in turn contains a few Label views (including the large one on the top and an example of handling click commands and data binding to a Label below)."/>
-      <Button Text="Click Me" Command="{Binding IncreaseCountCommand}"/>
-      <Label Text="{Binding CountDisplay}"/>
-    </StackLayout>
-  </ScrollView>
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+
+        <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand">
+            <Label Text="Xamarin" HorizontalTextAlignment="End" FontSize="30" TextColor="#34495E"></Label>
+            <Label Text="Insights" HorizontalTextAlignment="Start" FontSize="30" TextColor="#3498DB"></Label>
+        </StackLayout>
+
+        <Label Grid.Row="1" Grid.Column="0" Text="touch a button" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"></Label>
+
+        <Frame Grid.Row="2" Scale="2" HorizontalOptions="Center" OutlineColor="Accent">
+            <Label Text="あ"></Label>
+        </Frame>
+        
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Text="ka" BackgroundColor="Gray" Grid.Column="0" />
+            <Button Text="pa" Grid.Column="1" />
+            <Button Text="nnn" Grid.Column="2" />
+            <Button Text="nnn" Grid.Column="3" />
+        </Grid>
+        
+        
+    </Grid>
 </ContentPage>
