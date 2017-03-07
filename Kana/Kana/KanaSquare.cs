@@ -27,8 +27,8 @@ namespace Kana
             {
                 Text = $"{kanaChar.Hiragana} {kanaChar.Katakana}",
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.StartAndExpand
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
             };
 
             Label tinyLabel = new Label
@@ -40,45 +40,32 @@ namespace Kana
             };
 
             Padding = new Thickness(3);
+            var card = new Grid
+            {
+                Children =
+                {
+                    label,
+                    tinyLabel
+                }
+            };
+            
             if (kanaChar.OldCharObsoleted)
             {
-                Content = new Frame
+                card.Children.Add(new Label
                 {
-                    OutlineColor = Color.Accent,
-                    Padding = new Thickness(5, 10, 5, 0),
-                    Content = new Grid
-                    {
-                        Children =
-                        {
-                            new Label
-                            {
-                                Text = "*",
-                                FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label)),
-                                VerticalOptions = LayoutOptions.Start,
-                                HorizontalOptions = LayoutOptions.Start
-                            },
-                            label,
-                            tinyLabel
-                        }
-                    }
-                };
+                    Text = "*",
+                    FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                    VerticalOptions = LayoutOptions.Start,
+                    HorizontalOptions = LayoutOptions.Start
+                });
             }
-            else
+            Content = new Frame
             {
-                Content = new Frame
-                {
-                    OutlineColor = Color.Accent,
-                    Padding = new Thickness(5, 10, 5, 0),
-                    Content = new Grid
-                    {
-                        Children =
-                        {
-                            label,
-                            tinyLabel
-                        }
-                    }
-                };
-            }
+                HasShadow = Global.ShowFrameShadow,
+                OutlineColor = Color.Accent,
+                Padding = new Thickness(3, 0, 3, 0),
+                Content = card
+            };
             BackgroundColor = Color.Transparent;
         }
 

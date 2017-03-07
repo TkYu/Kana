@@ -95,6 +95,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Assets\Fonts\hkkaikk.ttf" />
     <None Include="Kana.UWP_StoreKey.pfx" />
     <None Include="Kana.UWP_TemporaryKey.pfx" />
     <None Include="project.json" />

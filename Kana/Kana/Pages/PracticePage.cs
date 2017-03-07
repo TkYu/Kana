@@ -11,7 +11,9 @@ namespace Kana.Pages
 {
     public class PracticePage : ContentPage
     {
-        class AnswerPad:Button
+        #region AnswerPad
+
+        class AnswerPad : Button
         {
             public int Row { get; }
             public int Col { get; }
@@ -32,22 +34,33 @@ namespace Kana.Pages
             }
         }
 
-        bool isPlaying = false;
+        #endregion
 
-        StackLayout stackLayout;
-        AbsoluteLayout absoluteLayout;
+        #region properties
+        private bool isPlaying;
+
+        private StackLayout stackLayout;
+        private AbsoluteLayout absoluteLayout;
+
+        private readonly Label lblS1;
+        private readonly Label lblS2;
         private readonly Label timeLabel;
-
         private readonly Label scoreLabel;
 
         private readonly Label currentKana;
         private string currentAnswer;
 
         DateTime startTime = DateTime.Now;
+
+        private readonly string displayFontFamily = Device.OnPlatform("HakusyuKaisyo_kk", "hkkaikk.ttf#HakusyuKaisyo_kk", "Assets/Fonts/hkkaikk.ttf#HakusyuKaisyo_kk");
+
+        private const int NUM_PADLEN = 4;
+        #endregion
+
         public PracticePage()
         {
             InitKanaPool();
-
+            
             absoluteLayout = new AbsoluteLayout()
             {
                 HorizontalOptions = LayoutOptions.Center,
@@ -56,39 +69,39 @@ namespace Kana.Pages
             
             for (int row = 0; row < 2; row++)
             {
-                for (int col = 0; col < 5; col++)
+                for (int col = 0; col < NUM_PADLEN; col++)
                 {
                     var btn = new AnswerPad("", row, col);
                     btn.Clicked += Btn_Clicked;
                     absoluteLayout.Children.Add(btn);
                 }
             }
-            var headingLayout = new StackLayout
-            {
-                Orientation = StackOrientation.Horizontal,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                Children = {
-                    new Label {
-                        Text = "一期",
-                        HorizontalTextAlignment = TextAlignment.End,
-                        FontSize = 30,
-                        TextColor = Color.FromHex ("#34495E")
-                    },
-                    new Label {
-                        Text = "一会",
-                        HorizontalTextAlignment = TextAlignment.Start,
-                        FontSize = 30,
-                        TextColor = Color.FromHex ("#3498DB")
-                    }
-                }
-            };
             
+
+            #region labels
+
+            lblS1 = new Label
+            {
+                Text = "一期",
+                FontFamily = displayFontFamily,
+                HorizontalTextAlignment = TextAlignment.End,
+                FontSize = 35,
+                TextColor = Color.FromHex("#34495E")
+            };
+            lblS2 = new Label
+            {
+                Text = "一会",
+                FontFamily = displayFontFamily,
+                HorizontalTextAlignment = TextAlignment.Start,
+                FontSize = 35,
+                TextColor = Color.FromHex("#3498DB")
+            };
             currentKana = new Label
             {
                 Text = "あ",
                 FontSize = 72,
-                Scale = 1.5,
-                FontAttributes = FontAttributes.Bold,
+                Scale = 3,
+                FontFamily = displayFontFamily,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
@@ -107,8 +120,25 @@ namespace Kana.Pages
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
+
+            #endregion
+
+            #region layouts
+
+            var headingLayout = new StackLayout
+            {
+                Padding = new Thickness(0, 40, 0, 0),
+                Orientation = StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                Children = {
+                    lblS1,
+                    lblS2
+                }
+            };
+
             var midLayout = new StackLayout
             {
+                Padding = new Thickness(0, 0, 0, 40),
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 Children = {
@@ -116,6 +146,40 @@ namespace Kana.Pages
                     timeLabel
                 }
             };
+            var fm = new Frame
+            {
+                HasShadow = Global.ShowFrameShadow,
+                OutlineColor = Color.Accent,
+                Padding = new Thickness(20),
+                Content = currentKana
+            };
+            stackLayout = new StackLayout
+            {
+                //Padding = new Thickness(0, 40, 0, 20),
+                Children =
+                {
+                    new StackLayout
+                    {
+                        VerticalOptions = LayoutOptions.EndAndExpand,
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        Padding = new Thickness(0,20,0,20),
+                        Children =
+                        {
+                            headingLayout,
+                            midLayout,
+                            fm
+                        }
+                    },
+                    absoluteLayout
+                }
+            };
+            
+            #endregion
+
+            stackLayout.SizeChanged += OnStackSizeChanged;
+            Padding = new Thickness(20, Device.OnPlatform(40, 0, 0), 20, 20);
+
+            Content = stackLayout;
 
             Device.StartTimer(TimeSpan.FromSeconds(1), () => {
                 if (isPlaying)
@@ -126,33 +190,6 @@ namespace Kana.Pages
                 }
                 return true;
             });
-            stackLayout = new StackLayout
-            {
-                Children =
-                {
-                    new StackLayout
-                    {
-                        VerticalOptions = LayoutOptions.EndAndExpand,
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        Padding = new Thickness(0,40,0,20),
-                        Children =
-                        {
-                            headingLayout,
-                            midLayout,
-                            new Frame
-                            {
-                                OutlineColor = Color.Accent,
-                                Padding = new Thickness(10),
-                                Content = currentKana
-                            }
-                        }
-                    },
-                    absoluteLayout
-                }
-            };
-            stackLayout.SizeChanged += OnStackSizeChanged;
-            Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
-            Content = stackLayout;
         }
 
 
@@ -168,10 +205,10 @@ namespace Kana.Pages
             stackLayout.Orientation = (width < height) ? StackOrientation.Vertical : StackOrientation.Horizontal;
 
             // Calculate square size and position based on stack size.
-            var squareSize = Math.Min(width, height) / Device.OnPlatform(iOS: 5, Android: 5, WinPhone: 5);
-            absoluteLayout.WidthRequest = 5 * squareSize;
-            absoluteLayout.HeightRequest = 5 * squareSize;
-            var padding = Device.OnPlatform(iOS: 15.0, Android: 2.0, WinPhone: 10.0);
+            var squareSize = Math.Min(width, height) / (NUM_PADLEN + Device.OnPlatform(1, 0.5, 0.5));
+            absoluteLayout.WidthRequest = NUM_PADLEN * squareSize;
+            absoluteLayout.HeightRequest = NUM_PADLEN * squareSize;
+            var padding = Device.OnPlatform(10.0, 2.0, 10.0);
             foreach (View view in absoluteLayout.Children)
             {
                 AnswerPad btn = (AnswerPad)view;
@@ -207,7 +244,7 @@ namespace Kana.Pages
         private Stack<KanaChar> KanaPool;
         private void InitKanaPool()
         {
-            List<KanaChar> lst = Kanas.Seion.Cast<KanaChar>().Where(kana => kana != null).ToList();
+            List<KanaChar> lst = Kanas.Seion.Cast<KanaChar>().Where(kana => kana != null && kana.OldCharObsoleted==false).ToList();
             lst.AddRange(Kanas.Dakuon.Cast<KanaChar>());
             KanaPool = CreateShuffledDeck(lst);
         }
@@ -223,8 +260,8 @@ namespace Kana.Pages
             return result;
         }
 
-        private int total = 0;
-        private int okay = 0;
+        private int total;
+        private int okay;
         private async Task ResetQuestion()
         {
             total++;
@@ -239,6 +276,8 @@ namespace Kana.Pages
             {
                 AnswerPad btn = (AnswerPad)view;
 
+                if (!btn.AcceptEvent) haveBad = true;
+
                 btn.TextColor = Color.White;
                 btn.BackgroundColor = Color.FromHex("00A0E9");
                 btn.AcceptEvent = true;
@@ -251,13 +290,17 @@ namespace Kana.Pages
             }
 
             if (!haveBad) okay++;
+            if (total % 10 == 0)
+            {
+                var cy = Kanas.Yojijukugo[rd.Next(0, Kanas.Yojijukugo.Length - 1)];
+                lblS1.Text = cy.Substring(0, 2);
+                lblS2.Text = cy.Substring(2, 2);
+            }
             if (isPlaying) scoreLabel.Text = $"{okay}/{total}";
             tsk.Add(currentKana.ScaleTo(0));
             await Task.WhenAll(tsk);
 
             tsk.Clear();
-
-            
 
             var take = TakeSome(absoluteLayout.Children.Count);
             var da = rd.Next(0, take.Length - 1);
@@ -266,7 +309,7 @@ namespace Kana.Pages
                 inc -= 60;
 
                 AnswerPad btn = (AnswerPad)absoluteLayout.Children[i];
-                if (!btn.AcceptEvent) haveBad = true;
+                
                 var cc = take[i];
                 if (i == da && currentAnswer == null)
                 {

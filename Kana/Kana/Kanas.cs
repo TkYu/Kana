@@ -15,10 +15,10 @@ namespace Kana
         {
             {new KanaChar("あ", "ア", "a", "[ä]"), new KanaChar("い", "イ", "i", "[i]"), new KanaChar("う", "ウ", "u", "[ɯ̹]"), new KanaChar("え", "エ", "e", "[e̞]"), new KanaChar("お", "オ", "o", "[o̞]")},
             {new KanaChar("か", "カ", "ka", "[kä]"), new KanaChar("き", "キ", "ki", "[kʲi]"), new KanaChar("く", "ク", "ku", "[kɯ̹]"), new KanaChar("け", "ケ", "ke", "[ke̞]"), new KanaChar("こ", "コ", "ko", "[ko̞]")},
-            {new KanaChar("さ", "サ", "sa", "[sä]"), new KanaChar("し", "シ", "si", "[ɕi]"), new KanaChar("す", "ス", "su", "[sɯ̹̈]"), new KanaChar("せ", "セ", "se", "[se̞]"), new KanaChar("そ", "ソ", "so", "[so̞]")},
-            {new KanaChar("た", "タ", "ta", "[tä]"), new KanaChar("ち", "チ", "ci", "[t͡ɕi]"), new KanaChar("つ", "ツ", "cu", "[t͡sɯ̹̈]"), new KanaChar("て", "テ", "te", "[te̞]"), new KanaChar("と", "ト", "to", "[to̞]")},
+            {new KanaChar("さ", "サ", "sa", "[sä]"), new KanaChar("し", "シ", "shi", "[ɕi]"), new KanaChar("す", "ス", "su", "[sɯ̹̈]"), new KanaChar("せ", "セ", "se", "[se̞]"), new KanaChar("そ", "ソ", "so", "[so̞]")},
+            {new KanaChar("た", "タ", "ta", "[tä]"), new KanaChar("ち", "チ", "chi", "[t͡ɕi]"), new KanaChar("つ", "ツ", "tsu", "[t͡sɯ̹̈]"), new KanaChar("て", "テ", "te", "[te̞]"), new KanaChar("と", "ト", "to", "[to̞]")},
             {new KanaChar("な", "ナ", "na", "[nä]"), new KanaChar("に", "ニ", "ni", "[nʲi]"), new KanaChar("ぬ", "ヌ", "nu", "[nɯ̹]"), new KanaChar("ね", "ネ", "ne", "[ne̞]"), new KanaChar("の", "ノ", "no", "[no̞]")},
-            {new KanaChar("は", "ハ", "ha", "[hä]"), new KanaChar("ひ", "ヒ", "hi", "[çi]"), new KanaChar("ふ", "フ", "hu", "[Φɯ̹]"), new KanaChar("へ", "ヘ", "he", "[he̞]"), new KanaChar("ほ", "ホ", "ho", "[ho̞]")},
+            {new KanaChar("は", "ハ", "ha", "[hä]"), new KanaChar("ひ", "ヒ", "hi", "[çi]"), new KanaChar("ふ", "フ", "fu", "[Φɯ̹]"), new KanaChar("へ", "ヘ", "he", "[he̞]"), new KanaChar("ほ", "ホ", "ho", "[ho̞]")},
             {new KanaChar("ま", "マ", "ma", "[mä]"), new KanaChar("み", "ミ", "mi", "[mʲi]"), new KanaChar("む", "ム", "mu", "[mɯ̹]"), new KanaChar("め", "メ", "me", "[me̞]"), new KanaChar("も", "モ", "mo", "[mo̞]")},
             {new KanaChar("や", "ヤ", "ya", "[jä]"), new KanaChar("い", "イ", "i", "[i]",true), new KanaChar("ゆ", "ユ", "yu", "[jɯ̹]"), new KanaChar("え", "エ", "e", "[e̞]",true), new KanaChar("よ", "ヨ", "yo", "[jo̞]")},
             {new KanaChar("ら", "ラ", "ra", "[ɺä]"), new KanaChar("り", "リ", "ri", "[ɺʲi]"), new KanaChar("る", "ル", "ru", "[ɺɯ̹]"), new KanaChar("れ", "レ", "re", "[ɺe̞]"), new KanaChar("ろ", "ロ", "ro", "[ɺo̞]")},
@@ -51,6 +51,10 @@ namespace Kana
             {new KanaChar("ぴゃ", "ピャ", "pya", "[pʲa]"), new KanaChar("ぴゅ", "ピュ", "pyu", "[pʲu͍]"), new KanaChar("ぴょ", "ピョ", "pyo", "[pʲo]")}
         };
 
+        public static string[] Yojijukugo { get; } = {
+            //"百戦錬磨","海千山千","三日天下","唯我独尊","一騎当千","臥薪嘗胆","唯一無二","不撓不屈","百花繚乱","因果応報","一期一会","風林火山"
+            "因果応報","一期一会","風林火山","海千山千","三日天下","朝三暮四","一刀両断","悪事千里","悪口雑言","異口同音","以心伝心","一意専心","一石二鳥","一挙両得"
+        };
 
 
         public static KanaSquare[] ToKanaSquares(this KanaChar[,] items)

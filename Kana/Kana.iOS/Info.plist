@@ -10,18 +10,13 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>9.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>Kana</string>
 	<key>CFBundleIdentifier</key>
@@ -47,5 +42,11 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleShortVersionString</key>
 	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>hkkaikk.ttf</string>
+	</array>
+	<key>UIMainStoryboardFile~ipad</key>
+	<string>LaunchScreen</string>
 </dict>
 </plist>

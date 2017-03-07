@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Global.cs" />
     <Compile Include="Kanas.cs" />
     <Compile Include="KanaSquare.cs" />
     <Compile Include="MainPage.xaml.cs">

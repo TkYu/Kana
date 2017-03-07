@@ -14,8 +14,7 @@ namespace Kana.Pages
         private AbsoluteLayout absoluteLayout;
         private readonly int matrixWidth;
         private readonly int matrixHeight;
-
-        private double factor = 1;
+        
 
         public GojuuonChart(KanaChar[,] matrix)
         {
@@ -41,7 +40,7 @@ namespace Kana.Pages
                 absoluteLayout.Children.Add(square);
             }
             absoluteLayout.SizeChanged += AbsoluteLayout_SizeChanged;
-            Padding = new Thickness(0, Device.OnPlatform(40, 0, 0), 0, 0);
+            Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             Content = absoluteLayout;
         }
 
@@ -69,8 +68,7 @@ namespace Kana.Pages
                 AbsoluteLayout.SetLayoutBounds(square,
                     new Rectangle(square.Col * squareW,
                         square.Row * squareH,
-                        squareW,
-                        squareH));
+                        squareW, squareH));
             }
         }
 
