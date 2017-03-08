@@ -20,7 +20,7 @@ namespace Kana.Pages
         {
             matrixWidth = matrix.GetLength(1);
             matrixHeight = matrix.GetLength(0);
-            absoluteLayout = new AbsoluteLayout()
+            absoluteLayout = new AbsoluteLayout
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand
@@ -41,10 +41,11 @@ namespace Kana.Pages
             }
             absoluteLayout.SizeChanged += AbsoluteLayout_SizeChanged;
             Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+            
             Content = absoluteLayout;
         }
 
-        public double fontFactor { get; set; } = 0.4;
+        public double FontFactor { get; set; } = 0.4;
         private void AbsoluteLayout_SizeChanged(object sender, EventArgs e)
         {
             double width = absoluteLayout.Width;
@@ -52,29 +53,24 @@ namespace Kana.Pages
 
             if (width <= 0 || height <= 0)
                 return;
-            // Calculate square size and position based on stack size.
-            var squareW = width / matrixWidth;
+            var squareW = matrixWidth > 4 ? width / matrixWidth : width * 0.85 / matrixWidth;
             var squareH = height / matrixHeight;
             var gold = squareW * 0.618;
             if (squareH > gold) squareH = gold;
             absoluteLayout.WidthRequest = matrixWidth * squareW;
             absoluteLayout.HeightRequest = matrixHeight * squareH;
-
-            foreach (View view in absoluteLayout.Children)
+            var shift = matrixWidth > 4 ? 0 : (width - squareW * matrixWidth)/2;
+            foreach (var view in absoluteLayout.Children)
             {
-                KanaSquare square = (KanaSquare)view;
-                square.SetLabelFont(fontFactor * squareH, FontAttributes.Bold);
-
-                AbsoluteLayout.SetLayoutBounds(square,
-                    new Rectangle(square.Col * squareW,
-                        square.Row * squareH,
-                        squareW, squareH));
+                var square = (KanaSquare)view;
+                square.SetLabelFont(FontFactor * squareH, FontAttributes.Bold);
+                AbsoluteLayout.SetLayoutBounds(square, new Rectangle(square.Col * squareW + shift, square.Row * squareH, squareW, squareH));
             }
         }
 
         async void OnSquareTapped(object parameter)
         {
-            KanaSquare tappedSquare = (KanaSquare)parameter;
+            var tappedSquare = (KanaSquare)parameter;
             await tappedSquare.AnimateWinAsync();
         }
     }

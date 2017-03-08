@@ -202,7 +202,7 @@ namespace Kana.Pages
                 return;
 
             // Orient StackLayout based on portrait/landscape mode.
-            stackLayout.Orientation = (width < height) ? StackOrientation.Vertical : StackOrientation.Horizontal;
+            stackLayout.Orientation = width < height ? StackOrientation.Vertical : StackOrientation.Horizontal;
 
             // Calculate square size and position based on stack size.
             var squareSize = Math.Min(width, height) / (NUM_PADLEN + Device.OnPlatform(1, 0.5, 0.5));
@@ -214,6 +214,7 @@ namespace Kana.Pages
                 AnswerPad btn = (AnswerPad)view;
                 btn.SetLabelFont(0.35 * squareSize, FontAttributes.None);
                 AbsoluteLayout.SetLayoutBounds(btn, new Rectangle(btn.Col * squareSize + padding/2, btn.Row * squareSize, squareSize - padding, squareSize - padding));
+                //AbsoluteLayout.SetLayoutBounds(btn, new Rectangle(btn.Col * squareSize, btn.Row * squareSize, squareSize, squareSize));
             }
         }
 
@@ -246,7 +247,7 @@ namespace Kana.Pages
         {
             List<KanaChar> lst = Kanas.Seion.Cast<KanaChar>().Where(kana => kana != null && kana.OldCharObsoleted==false).ToList();
             lst.AddRange(Kanas.Dakuon.Cast<KanaChar>());
-            KanaPool = CreateShuffledDeck(lst);
+            KanaPool = lst.CreateShuffledDeck();
         }
 
         private KanaChar[] TakeSome(int len)
@@ -256,6 +257,9 @@ namespace Kana.Pages
             for (int i = 0; i < len; i++)
             {
                 result[i] = KanaPool.Pop();
+                if ((result[i].Romaji == "o" || result[i].Romaji == "ji" || result[i].Romaji == "zu") && result.Any(c => c.Romaji == result[i].Romaji))
+                    result[i] = KanaPool.Pop();
+
             }
             return result;
         }
@@ -327,26 +331,7 @@ namespace Kana.Pages
             await Task.WhenAll(tsk);
         }
 
-        private static Stack<T> CreateShuffledDeck<T>(IEnumerable<T> values)
-        {
-            var rand = new Random();
-
-            var list = new List<T>(values);
-            var stack = new Stack<T>();
-
-            while (list.Count > 0)
-            {
-                // Get the next item at random.
-                var index = rand.Next(0, list.Count);
-                var item = list[index];
-
-                // Remove the item from the list and push it to the top of the deck.
-                list.RemoveAt(index);
-                stack.Push(item);
-            }
-
-            return stack;
-        }
+        
 
         protected override async void OnAppearing()
         {

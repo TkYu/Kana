@@ -13,7 +13,7 @@ namespace Kana.Pages
     {
         public DakuonPage() : base(Kanas.Dakuon)
         {
-            fontFactor = Device.OnPlatform(Android: 0.5, iOS: 0.35, WinPhone: 0.45);
+            FontFactor = Device.OnPlatform(Android: 0.5, iOS: 0.35, WinPhone: 0.45);
         }
     }
 }

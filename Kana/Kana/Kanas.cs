@@ -70,5 +70,21 @@ namespace Kana
             }
             return lst.ToArray();
         }
+
+        public static Stack<T> CreateShuffledDeck<T>(this IEnumerable<T> values)
+        {
+            var rand = new Random();
+            var list = new List<T>(values);
+            var stack = new Stack<T>();
+
+            while (list.Count > 0)
+            {
+                var index = rand.Next(0, list.Count);
+                var item = list[index];
+                list.RemoveAt(index);
+                stack.Push(item);
+            }
+            return stack;
+        }
     }
 }

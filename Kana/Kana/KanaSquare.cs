@@ -28,15 +28,16 @@ namespace Kana
                 Text = $"{kanaChar.Hiragana} {kanaChar.Katakana}",
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.CenterAndExpand
+                VerticalOptions = LayoutOptions.StartAndExpand
             };
 
             Label tinyLabel = new Label
             {
+                Margin = new Thickness(0,0,0,1),
                 Text = kanaChar.Romaji,
                 FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label)),
                 VerticalOptions = LayoutOptions.End,
-                HorizontalOptions = LayoutOptions.End
+                HorizontalOptions = LayoutOptions.Center
             };
 
             Padding = new Thickness(3);
@@ -48,7 +49,6 @@ namespace Kana
                     tinyLabel
                 }
             };
-            
             if (kanaChar.OldCharObsoleted)
             {
                 card.Children.Add(new Label
@@ -63,7 +63,7 @@ namespace Kana
             {
                 HasShadow = Global.ShowFrameShadow,
                 OutlineColor = Color.Accent,
-                Padding = new Thickness(3, 0, 3, 0),
+                Padding = new Thickness(3, 3, 3, 0),
                 Content = card
             };
             BackgroundColor = Color.Transparent;
@@ -72,10 +72,13 @@ namespace Kana
         public async Task AnimateWinAsync()
         {
             isReverse = !isReverse;
+
             uint length = 150;
-            await Task.WhenAll(this.ScaleTo(2, length), this.RotateTo(180, length));
+            //await (isReverse ? this.RotateXTo(180, length) : this.RotateXTo(-180, length));
+            await this.RotateXTo(180, length);
             label.Text = isReverse ? kanaChar.PhoneticSymbol : $"{kanaChar.Hiragana} {kanaChar.Katakana}";
-            await Task.WhenAll(this.ScaleTo(1, length), this.RotateTo(360, length));
+            await this.RotateXTo(0, length);
+            //await (isReverse ? this.RotateXTo(360, length) : this.RotateXTo(0, length));
             Rotation = 0;
         }
 
