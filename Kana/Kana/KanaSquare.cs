@@ -28,7 +28,7 @@ namespace Kana
                 Text = $"{kanaChar.Hiragana} {kanaChar.Katakana}",
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.StartAndExpand
+                VerticalOptions = LayoutOptions.Start
             };
 
             Label tinyLabel = new Label

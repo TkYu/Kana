@@ -85,7 +85,7 @@ namespace Kana.Pages
                 Text = "一期",
                 FontFamily = displayFontFamily,
                 HorizontalTextAlignment = TextAlignment.End,
-                FontSize = 35,
+                FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 2,
                 TextColor = Color.FromHex("#34495E")
             };
             lblS2 = new Label
@@ -93,30 +93,30 @@ namespace Kana.Pages
                 Text = "一会",
                 FontFamily = displayFontFamily,
                 HorizontalTextAlignment = TextAlignment.Start,
-                FontSize = 35,
+                FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 2,
                 TextColor = Color.FromHex("#3498DB")
             };
             currentKana = new Label
             {
                 Text = "あ",
-                FontSize = 72,
-                Scale = 3,
+                FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 6,
+                //Scale = 1.5,
                 FontFamily = displayFontFamily,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
-
+            //System.Diagnostics.Debug.WriteLine($"{Device.GetNamedSize(NamedSize.Large, typeof(Label))}:{Width}");
             scoreLabel = new Label
             {
                 Text = "0/0",
-                FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label)),
+                FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
             timeLabel = new Label
             {
                 Text = "00:00",
-                FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label)),
+                FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
@@ -127,7 +127,7 @@ namespace Kana.Pages
 
             var headingLayout = new StackLayout
             {
-                Padding = new Thickness(0, 40, 0, 0),
+                Padding = new Thickness(0, 20, 0, 0),
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 Children = {
@@ -138,7 +138,7 @@ namespace Kana.Pages
 
             var midLayout = new StackLayout
             {
-                Padding = new Thickness(0, 0, 0, 40),
+                Padding = new Thickness(0, 0, 0, 20),
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 Children = {
@@ -146,11 +146,12 @@ namespace Kana.Pages
                     timeLabel
                 }
             };
+
             var fm = new Frame
             {
                 HasShadow = Global.ShowFrameShadow,
                 OutlineColor = Color.Accent,
-                Padding = new Thickness(20),
+                Padding = new Thickness(10,10,10,20),
                 Content = currentKana
             };
             stackLayout = new StackLayout
