@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TabbedPage
+    x:Class="Kana.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Kana"
+    xmlns:pages="clr-namespace:Kana.Pages"
+    Shell.FlyoutBehavior="Disabled"
+    xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+    android:TabbedPage.IsSwipePagingEnabled="False"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    Title="Kana">
+
+    <NavigationPage Title="清音" IconImageSource="language_hiragana_icon.png">
+        <x:Arguments>
+            <pages:SeionPage Title="清音表" />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="濁音" IconImageSource="language_katakana_icon.png">
+        <x:Arguments>
+            <pages:DakuonPage Title="濁音表" />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="拗音" IconImageSource="language_icon.png">
+        <x:Arguments>
+            <pages:YoonPage Title="拗音表" />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="練習" IconImageSource="checkbox_icon.png">
+        <x:Arguments>
+            <pages:PracticePage Title="練習" />
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>
