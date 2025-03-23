@@ -14,7 +14,7 @@ namespace Kana
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     // https://fonts.google.com/specimen/Yuji+Syuku
-                    fonts.AddFont("YujiSyuku-Regular.ttf", "Yuji Syuku");
+                    fonts.AddFont("YujiSyuku-Regular.ttf", "YujiSyuku");
                 });
 
 #if DEBUG

@@ -8,12 +8,12 @@ namespace Kana
 {
     public static class Global
     {
-        public const string YSFontFamily = "Yuji Syuku";
+        public const string YSFontFamily = "YujiSyuku";
 
         public static bool ShowFrameShadow { get; } = OnPlatform(false, true, true);
 
 
-        private static T OnImpl<T>(T @default = default(T), T iOS = default(T), T Android = default(T), Func<T>? computeCustom = null)
+        private static T OnImpl<T>(T @default = default(T), T iOS = default(T), T Android = default(T), Func<T> computeCustom = null)
         {
             if (DeviceInfo.Platform == DevicePlatform.iOS)
                 return iOS;
