@@ -1,6 +1,6 @@
 ﻿namespace Kana
 {
-    public partial class AppShell : TabbedPage
+    public partial class AppShell : Shell
     {
         public AppShell()
         {

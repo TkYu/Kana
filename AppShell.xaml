@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<TabbedPage
+<Shell
     x:Class="Kana.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -11,24 +11,39 @@
     android:TabbedPage.ToolbarPlacement="Bottom"
     Title="Kana">
 
-    <NavigationPage Title="清音" IconImageSource="language_hiragana_icon.png">
-        <x:Arguments>
-            <pages:SeionPage Title="清音表" />
-        </x:Arguments>
-    </NavigationPage>
-    <NavigationPage Title="濁音" IconImageSource="language_katakana_icon.png">
-        <x:Arguments>
-            <pages:DakuonPage Title="濁音表" />
-        </x:Arguments>
-    </NavigationPage>
-    <NavigationPage Title="拗音" IconImageSource="language_icon.png">
-        <x:Arguments>
-            <pages:YoonPage Title="拗音表" />
-        </x:Arguments>
-    </NavigationPage>
-    <NavigationPage Title="練習" IconImageSource="checkbox_icon.png">
-        <x:Arguments>
-            <pages:PracticePage Title="練習" />
-        </x:Arguments>
-    </NavigationPage>
-</TabbedPage>
+    <!-- <NavigationPage Title="清音" IconImageSource="language_hiragana_icon.png"> -->
+    <!--     <x:Arguments> -->
+    <!--         <pages:SeionPage Title="清音表" /> -->
+    <!--     </x:Arguments> -->
+    <!-- </NavigationPage> -->
+    <!-- <NavigationPage Title="濁音" IconImageSource="language_katakana_icon.png"> -->
+    <!--     <x:Arguments> -->
+    <!--         <pages:DakuonPage Title="濁音表" /> -->
+    <!--     </x:Arguments> -->
+    <!-- </NavigationPage> -->
+    <!-- <NavigationPage Title="拗音" IconImageSource="language_icon.png"> -->
+    <!--     <x:Arguments> -->
+    <!--         <pages:YoonPage Title="拗音表" /> -->
+    <!--     </x:Arguments> -->
+    <!-- </NavigationPage> -->
+    <!-- <NavigationPage Title="練習" IconImageSource="checkbox_icon.png"> -->
+    <!--     <x:Arguments> -->
+    <!--         <pages:PracticePage Title="練習" /> -->
+    <!--     </x:Arguments> -->
+    <!-- </NavigationPage> -->
+
+    <TabBar>
+        <Tab Title="清音" Icon="language_hiragana_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:SeionPage}" />
+        </Tab>
+        <Tab Title="濁音" Icon="language_katakana_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:DakuonPage}"/>
+        </Tab>
+        <Tab Title="拗音" Icon="language_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:YoonPage}"/>
+        </Tab>
+        <Tab Title="練習" Icon="checkbox_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:PracticePage}"/>
+        </Tab>
+    </TabBar>
+</Shell>

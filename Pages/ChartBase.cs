@@ -1,53 +1,58 @@
-﻿namespace Kana.Pages
+﻿using System.Diagnostics;
+
+namespace Kana.Pages
 {
     public class ChartBase : ContentPage
     {
-        private readonly StackLayout stackLayout;
-        private readonly AbsoluteLayout absoluteLayout;
+        // private readonly StackLayout stackLayout;
+        // private readonly AbsoluteLayout absoluteLayout;
         private readonly int matrixWidth;
         private readonly int matrixHeight;
         
-
         public ChartBase(KanaChar[,] matrix)
         {
-            stackLayout = new StackLayout
+            var stackLayout = new StackLayout
             {
                 Spacing = 6,
-                Margin = 5
+                Margin = new Thickness(5,Global.OnPlatform(5,5,15))
             };
-            stackLayout.SizeChanged += Layout_SizeChanged;
 
+            stackLayout.SizeChanged += Layout_SizeChanged;
             matrixWidth = matrix.GetLength(1);
             matrixHeight = matrix.GetLength(0);
 
-            absoluteLayout = new AbsoluteLayout
+            var absoluteLayout = new AbsoluteLayout
             {
                 // HorizontalOptions = new LayoutOptions(LayoutAlignment.Fill, true),
                 // VerticalOptions = new LayoutOptions(LayoutAlignment.Fill, true)
             };
+            // absoluteLayout.SizeChanged+= Layout_SizeChanged;
             var squares = matrix.ToKanaSquares();
             foreach (var square in squares)
             {
                 if (!string.IsNullOrEmpty(square.KanaChar.PhoneticSymbol))
                 {
-                    var tapGestureRecognizer = new TapGestureRecognizer
-                    {
-                        Command = new Command(OnSquareTapped),
-                        CommandParameter = square
-                    };
+                    var tapGestureRecognizer = new TapGestureRecognizer();
+                    tapGestureRecognizer.Tapped += async (s, e) => { await (s as KanaSquare)!.AnimateWinAsync(); };
                     square.GestureRecognizers.Add(tapGestureRecognizer);
                 }
                 absoluteLayout.Add(square);
             }
-            // Padding = new Thickness(0, Global.OnPlatform(30, 0, 0), 0, 0);
+
             stackLayout.Add(absoluteLayout);
             Content = stackLayout;
         }
 
         private void Layout_SizeChanged(object sender, EventArgs e)
         {
-            double width = stackLayout.Width;
-            double height = stackLayout.Height;
+            var stackLayout = Content as StackLayout;
+            if (stackLayout == null) return;
+            
+            var width = stackLayout.Width;
+            var height = stackLayout.Height;
+            
+            var absoluteLayout = stackLayout.Children[0] as AbsoluteLayout;
+            if (absoluteLayout == null) return;
 
             if (width <= 0 || height <= 0)
                 return;
@@ -62,16 +67,11 @@
             {
                 var square = (KanaSquare)view;
                 square.SetLabelFont(FontFactor * squareH, FontAttributes.Bold);
-                AbsoluteLayout.SetLayoutBounds(square, new Rect(square.Col * squareW + shift, square.Row * squareH, squareW, squareH));
+                var r = new Rect(square.Col * squareW + shift, square.Row * squareH, squareW, squareH);
+                AbsoluteLayout.SetLayoutBounds(square, r);
             }
         }
 
         public double FontFactor { get; set; } = 0.4;
-        
-        async void OnSquareTapped(object parameter)
-        {
-            var tappedSquare = (KanaSquare)parameter;
-            await tappedSquare.AnimateWinAsync();
-        }
     }
 }

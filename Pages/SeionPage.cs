@@ -10,7 +10,7 @@ namespace Kana.Pages
     {
         public SeionPage() : base(KanaChars.Seion)
         {
-            FontFactor = Global.OnPlatform(0.45, 0.5, 0.35);
+            FontFactor = Global.OnPlatform(0.45, 0.5, 0.4);
         }
     }
 }

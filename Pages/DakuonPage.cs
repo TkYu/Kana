@@ -10,7 +10,7 @@ namespace Kana.Pages
     {
         public DakuonPage() : base(KanaChars.Dakuon)
         {
-            FontFactor = Global.OnPlatform(0.45, 0.5, 0.35);
+            FontFactor = Global.OnPlatform(0.45, 0.5, 0.4);
         }
     }
 }

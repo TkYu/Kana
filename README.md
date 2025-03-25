@@ -4,7 +4,7 @@ Just 4 fun.
 ## Current status
 - [x] Move to .NET 8 MAUI
 - [x] Work on Windows
-- [ ] Work on Android(Cant response click, that's weird, but I will try)
+- [ ] Work on Android(Can't response click event, that's weird, still working on it)
 - [ ] Work on iOS(I have no Mac to test)
 
 ## Usage
