@@ -1,6 +1,9 @@
 # Kana
 Just 4 fun.
 
+![preview](screenshot.jpg)
+
+
 ## Current status
 - [x] Move to .NET 8 MAUI
 - [x] Work on Windows
