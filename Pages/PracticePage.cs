@@ -225,6 +225,7 @@ namespace Kana.Pages
             }
         }
 
+        private readonly List<string> learnedList = new List<string>();
         private async void Btn_Clicked(object sender, EventArgs e)
         {
             if (sender == null) return;
@@ -238,6 +239,9 @@ namespace Kana.Pages
                 }
                 if (currentAnswer == btn.Text)
                 {
+                    if(learnedList.Count > 60)
+                        learnedList.Clear();
+                    learnedList.Add(currentAnswer);
                     await ResetQuestion();
                 }
                 else
@@ -261,19 +265,20 @@ namespace Kana.Pages
         private KanaChar[] TakeSome(int len)
         {
             var result = new KanaChar[len];
-            if (KanaPool.Count < len) InitKanaPool();
+            if (KanaPool.Count < len) 
+                InitKanaPool();
             for (int i = 0; i < len; i++)
             {
                 result[i] = KanaPool.Pop();
-                if ((result[i].Romaji == "o" || result[i].Romaji == "ji" || result[i].Romaji == "zu") && result.Any(c => c.Romaji == result[i].Romaji))
-                    result[i] = KanaPool.Pop();
-
+                // if ((result[i].Romaji == "wo" || result[i].Romaji == "ji" || result[i].Romaji == "zu") && result.Any(c => c.Romaji == result[i].Romaji))
+                //     result[i] = KanaPool.Pop();
             }
             return result;
         }
 
         private int total;
         private int okay;
+
         private async Task ResetQuestion()
         {
             total++;
@@ -315,18 +320,38 @@ namespace Kana.Pages
             tsk.Clear();
 
             var take = TakeSome(absoluteLayout.Children.Count);
-            var da = rd.Next(0, take.Length - 1);
+            var selectIndex = -1;
+            var randomIndex = rd.Next(0, take.Length - 1);
+            while (selectIndex < 0)
+            {
+                if (!learnedList.Contains(take[randomIndex].Romaji))
+                {
+                    selectIndex = randomIndex;
+                    break;
+                }
+                selectIndex -= 1;
+                randomIndex = rd.Next(0, take.Length - 1);
+                if (selectIndex <= -absoluteLayout.Children.Count - 1)
+                    take = TakeSome(absoluteLayout.Children.Count);
+            }
+
             for (int i = 0; i < absoluteLayout.Children.Count; i++)
             {
                 inc -= 60;
 
-                AnswerPad btn = (AnswerPad)absoluteLayout.Children[i];
+                var btn = (AnswerPad)absoluteLayout.Children[i];
                 
                 var cc = take[i];
-                if (i == da && currentAnswer == null)
+                if (i == selectIndex && currentAnswer == null)
                 {
-                    currentKana.Text = rd.Next(0, 100) < 50 ? cc.Hiragana : cc.Katakana;
-                    currentAnswer = cc.Romaji;
+                    if(!learnedList.Contains(cc.Romaji))
+                    {
+                        currentKana.Text = rd.Next(0, 100) < 50 ? cc.Hiragana : cc.Katakana;
+                        currentAnswer = cc.Romaji;
+                    }
+                    else
+                    {
+                    }
                 }
 
                 

@@ -19,7 +19,7 @@ namespace Kana
             {new KanaChar("ま", "マ", "ma", "[mä]"), new KanaChar("み", "ミ", "mi", "[mʲi]"), new KanaChar("む", "ム", "mu", "[mɯ̹]"), new KanaChar("め", "メ", "me", "[me̞]"), new KanaChar("も", "モ", "mo", "[mo̞]")},
             {new KanaChar("や", "ヤ", "ya", "[jä]"), new KanaChar("い", "イ", "i", "[i]",true), new KanaChar("ゆ", "ユ", "yu", "[jɯ̹]"), new KanaChar("え", "エ", "e", "[e̞]",true), new KanaChar("よ", "ヨ", "yo", "[jo̞]")},
             {new KanaChar("ら", "ラ", "ra", "[ɺä]"), new KanaChar("り", "リ", "ri", "[ɺʲi]"), new KanaChar("る", "ル", "ru", "[ɺɯ̹]"), new KanaChar("れ", "レ", "re", "[ɺe̞]"), new KanaChar("ろ", "ロ", "ro", "[ɺo̞]")},
-            {new KanaChar("わ", "ワ", "wa", "[β̞ä]"), new KanaChar("い", "イ", "i", "ゐ ヰ",true), new KanaChar("う", "ウ", "u", "[ɯ̹]",true), new KanaChar("え", "エ", "e", "ゑ ヱ",true), new KanaChar("を", "ヲ", "o", "[o̞]")},
+            {new KanaChar("わ", "ワ", "wa", "[β̞ä]"), new KanaChar("い", "イ", "i", "ゐ ヰ",true), new KanaChar("う", "ウ", "u", "[ɯ̹]",true), new KanaChar("え", "エ", "e", "ゑ ヱ",true), new KanaChar("を", "ヲ", "wo", "[o̞]")},
             {new KanaChar("ん", "ン", "n", "[n]"), null,null,null,null}
         };
 
@@ -27,7 +27,7 @@ namespace Kana
         {
             {new KanaChar("が", "ガ", "ga", "[ɡa]"), new KanaChar("ぎ", "ギ", "gi", "[ɡi]"), new KanaChar("ぐ", "グ", "gu", "[ɡu͍]"), new KanaChar("げ", "ゲ", "ge", "[ɡe]"), new KanaChar("ご", "ゴ", "go", "[ɡo]")},
             {new KanaChar("ざ", "ザ", "za", "[za]"), new KanaChar("じ", "ジ", "ji", "[d͡ʑi]"), new KanaChar("ず", "ズ", "zu", "[zu͍]"), new KanaChar("ぜ", "ゼ", "ze", "[ze]"), new KanaChar("ぞ", "ゾ", "zo", "[zo]")},
-            {new KanaChar("だ", "ダ", "da", "[da]"), new KanaChar("ぢ", "ヂ", "ji", "[d͡ʑi]"), new KanaChar("づ", "ヅ", "zu", "[zu͍]"), new KanaChar("で", "デ", "de", "[de]"), new KanaChar("ど", "ド", "do", "[do]")},
+            {new KanaChar("だ", "ダ", "da", "[da]"), new KanaChar("ぢ", "ヂ", "di", "[d͡ʑi]"), new KanaChar("づ", "ヅ", "du", "[zu͍]"), new KanaChar("で", "デ", "de", "[de]"), new KanaChar("ど", "ド", "do", "[do]")},
             {new KanaChar("ば", "バ", "ba", "[ba]"), new KanaChar("び", "ビ", "bi", "[bi]"), new KanaChar("ぶ", "ブ", "bu", "[bu͍]"), new KanaChar("べ", "ベ", "be", "[be]"), new KanaChar("ぼ", "ボ", "bo", "[bo]")},
             {new KanaChar("ぱ", "パ", "pa", "[pa]"), new KanaChar("ぴ", "ピ", "pi", "[pi]"), new KanaChar("ぷ", "プ", "pu", "[pu͍]"), new KanaChar("ぺ", "ペ", "pe", "[pe]"), new KanaChar("ぽ", "ポ", "po", "[po]")}
 
