@@ -23,6 +23,9 @@ namespace Kana.Pages
                 Col = col;
                 TextColor = Colors.White;
                 BackgroundColor = Color.FromArgb("00A0E9");
+
+                LineBreakMode = LineBreakMode.NoWrap;
+                FontAutoScalingEnabled = true;
             }
             public void SetLabelFont(double fontSize, FontAttributes attributes)
             {
@@ -51,11 +54,19 @@ namespace Kana.Pages
 
         DateTime startTime = DateTime.Now;
 
+        private double FontFactor { get; set; }
+
         private const int NUM_PADLEN = 4;
         #endregion
 
         public PracticePage()
         {
+            var screenSize = DeviceDisplay.MainDisplayInfo;
+            var screenWidth = screenSize.Width / screenSize.Density;
+            var screenHeight = screenSize.Height / screenSize.Density;
+            var screenSizeFactor = Math.Min(screenWidth, screenHeight) / 1000;
+            FontFactor = Math.Max(0.3, Math.Min(0.35, screenSizeFactor));
+
             InitKanaPool();
             
             absoluteLayout = new AbsoluteLayout()
@@ -219,7 +230,7 @@ namespace Kana.Pages
             foreach (var view in absoluteLayout.Children)
             {
                 var btn = (AnswerPad)view;
-                btn.SetLabelFont(0.35 * squareSize, FontAttributes.None);
+                btn.SetLabelFont(0.3 * squareSize, FontAttributes.None);
                 AbsoluteLayout.SetLayoutBounds(btn, new Rect(btn.Col * squareSize + padding/2, btn.Row * squareSize, squareSize - padding, squareSize - padding));
                 //AbsoluteLayout.SetLayoutBounds(btn, new Rectangle(btn.Col * squareSize, btn.Row * squareSize, squareSize, squareSize));
             }
@@ -267,11 +278,9 @@ namespace Kana.Pages
             var result = new KanaChar[len];
             if (KanaPool.Count < len) 
                 InitKanaPool();
-            for (int i = 0; i < len; i++)
+            for (var i = 0; i < len; i++)
             {
                 result[i] = KanaPool.Pop();
-                // if ((result[i].Romaji == "wo" || result[i].Romaji == "ji" || result[i].Romaji == "zu") && result.Any(c => c.Romaji == result[i].Romaji))
-                //     result[i] = KanaPool.Pop();
             }
             return result;
         }
@@ -344,14 +353,8 @@ namespace Kana.Pages
                 var cc = take[i];
                 if (i == selectIndex && currentAnswer == null)
                 {
-                    if(!learnedList.Contains(cc.Romaji))
-                    {
-                        currentKana.Text = rd.Next(0, 100) < 50 ? cc.Hiragana : cc.Katakana;
-                        currentAnswer = cc.Romaji;
-                    }
-                    else
-                    {
-                    }
+                    currentKana.Text = rd.Next(0, 100) < 50 ? cc.Hiragana : cc.Katakana;
+                    currentAnswer = cc.Romaji;
                 }
 
                 

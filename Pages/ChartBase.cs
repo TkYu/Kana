@@ -9,8 +9,15 @@ namespace Kana.Pages
         private readonly int matrixWidth;
         private readonly int matrixHeight;
         
+        public double FontFactor { get; set; }
         public ChartBase(KanaChar[,] matrix)
         {
+            var screenSize = DeviceDisplay.MainDisplayInfo;
+            var screenWidth = screenSize.Width / screenSize.Density;
+            var screenHeight = screenSize.Height / screenSize.Density;
+            var screenSizeFactor = Math.Min(screenWidth, screenHeight) / 1000;
+            FontFactor = Math.Max(0.4, Math.Min(0.45, screenSizeFactor));
+
             var stackLayout = new StackLayout
             {
                 Spacing = 6,
@@ -71,7 +78,5 @@ namespace Kana.Pages
                 AbsoluteLayout.SetLayoutBounds(square, r);
             }
         }
-
-        public double FontFactor { get; set; } = 0.4;
     }
 }

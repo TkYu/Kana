@@ -22,11 +22,8 @@ namespace Kana
             Col = col;
             kanaChar = kana;
 
-#if MACCATALYST || WINDOWS
-            double fontSize = 13;
-#elif ANDROID || IOS
-            double fontSize = 11;
-#endif
+
+            const double fontSize = 13;
 
             label = new Label
             {
@@ -34,14 +31,20 @@ namespace Kana
                 FontFamily = Global.YSFontFamily,
                 FontSize = fontSize,
                 HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Start
+#if MACCATALYST || WINDOWS
+                VerticalOptions = LayoutOptions.Start,
+#elif ANDROID || IOS
+                VerticalOptions = LayoutOptions.Center,
+#endif
+                LineBreakMode = LineBreakMode.NoWrap,
+                FontAutoScalingEnabled = true
             };
 
             var tinyLabel = new Label
             {
                 Margin = new Thickness(0,0,0,1),
                 Text = kanaChar.Romaji,
-                FontSize = fontSize-2,
+                FontSize = fontSize * 0.8,
                 VerticalOptions = LayoutOptions.End,
                 HorizontalOptions = LayoutOptions.Center
             };

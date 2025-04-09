@@ -6,11 +6,5 @@ using System.Threading.Tasks;
 
 namespace Kana.Pages
 {
-    public class DakuonPage : ChartBase
-    {
-        public DakuonPage() : base(KanaChars.Dakuon)
-        {
-            FontFactor = Global.OnPlatform(0.45, 0.5, 0.4);
-        }
-    }
+    public class DakuonPage() : ChartBase(KanaChars.Dakuon);
 }

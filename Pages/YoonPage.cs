@@ -10,7 +10,7 @@ namespace Kana.Pages
     {
         public YoonPage() : base(KanaChars.Youon)
         {
-            FontFactor = Global.OnPlatform(0.45, 0.5, 0.35);
+            FontFactor *= 0.7;
         }
     }
 }
